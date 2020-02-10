@@ -15,3 +15,38 @@
 
 // Challenge
 // Make the countdown live...
+
+const body = document.querySelector("body");
+const result = document.createElement("p");
+const instruction = document.createElement("p");
+const VICTORY = "You win!";
+const DEFEAT = "You lose!";
+
+let timer = Math.floor(Math.random() * 5 + 1);
+let miliseconds = timer * 1000;
+let detect = false;
+
+document.getElementById('time').innerText = timer;
+
+function clickDetect(event) {
+    if (event) {
+        detect = true;
+    }
+
+    body.removeEventListener("click", clickDetect);
+}
+
+const chrono = setInterval(function () {
+    if (detect === true) {
+        result.innerText = `${VICTORY}`;
+        document.body.appendChild(result);
+        clearInterval(chrono);
+    }
+    else if (detect === false) {
+        result.innerText = `${DEFEAT}`;
+        document.body.appendChild(result);
+        clearInterval(chrono);
+    }
+}, miliseconds);
+
+body.addEventListener("click", clickDetect);
