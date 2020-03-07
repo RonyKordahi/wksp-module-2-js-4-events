@@ -9,3 +9,14 @@
 // OPTIONAL
 // Feel free to add some CSS to this once you're done
 // --------------------------------------------------
+
+const body = document.querySelector("body");
+const result = document.createElement("p");
+
+function clickDetect(event) {
+    result.innerText = "You clicked a thing!";
+    document.body.appendChild(result);
+    body.removeEventListener("click", clickDetect);
+}
+
+body.addEventListener("click", clickDetect);

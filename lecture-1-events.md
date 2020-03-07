@@ -26,11 +26,11 @@ Open the door, when someone is there.
 
 #### User Interface Events
 
-- `load`
-- `unload`
-- `error`
-- `resize`
-- `scroll`
+- `load`: when a node is added/loaded
+- `unload`: when a node is removed/unloaded
+- `error`: error
+- `resize`: when the screen is resized
+- `scroll`: when the user scrolls
 
 ---
 
@@ -38,55 +38,55 @@ Open the door, when someone is there.
 
 These events fire when the HTML elements you can interact with gain/ lose focus.
 
-- `focus`
-- `blur`
-- `focusin` (_new; not supported by Firefox_)
-- `focusout` (_new; same as blur; not supported by Firefox_)
+- `focus`: toggled on/interacted with
+- `blur`: toggled off/something else being interacted with
+- `focusin` (_new; not supported by Firefox_): same as focus
+- `focusout` (_new; same as blur; not supported by Firefox_) : same as blur
 
 ---
 
 ##### Mouse Events
 
-- `click`
-- `dblclick`
-- `mousedown`
-- `mouseup`
-- `mouseover`
-- `mouseout`
-- `mousemove`
+- `click`: on click
+- `dblclick`: on double click
+- `mousedown`: when click being held
+- `mouseup`: when click is let go
+- `mouseover`: when mouse hovers
+- `mouseout`: when the mouse leaves an element 
+- `mousemove`: when the mouse moves (anytime)
 
 ---
 
 ##### Keyboard Events
 
-- `input`
-- `keydown`
-- `keypress`
-- `keyup`
+- `input`: when user inputs
+- `keydown`: when any key is going down (being pressed)
+- `keypress`: when a key is pressed (once)
+- `keyup`: when a key is going up (being released)
 
 ---
 
 ### Form Events
 
-- `submit`
-- `change`
-- `input`
+- `submit`: submit field?
+- `change`: detects change in a field
+- `input`: when an input is triggered
 
 ---
 
 ### HTML5 Events
 
-- `DOMContentLoaded`
-- `hashchange`
-- `beforeunload`
+- `DOMContentLoaded`: when the content is loaded
+- `hashchange`: listents for adding # in the url, takes you to a specific section
+- `beforeunload`: before application/website is closed
 
 ---
 
 ### CSS Events
 
-- `transitionend`
-- `animationstart`
-- `animationend`
+- `transitionend`: when a CSS transition ends
+- `animationstart`: when a CSS animation starts
+- `animationend`: when a CSS animation ends
 
 ---
 
@@ -99,7 +99,18 @@ All DOM nodes have methods we can use to _notify_ us of an event.
 
 ```js
 // Example
-
+//event listeners always go at the end of the code
+const button = document.getElementByID("btn");
+button.addEvenetListener(:"click", function() {
+    console.log("ouch");
+});//event listeners take 2 arguments: 1) what we listen for. 2) function
+//OR
+const button = document.getElementByID("btn");
+function handleOuch() {
+    console.log("ouch");
+}
+button.addEventListener("click", handleOuch);
+button.removeEventListener("click", handleOuch);
 ```
 
 ---
